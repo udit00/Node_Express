@@ -1,14 +1,16 @@
 import sql from 'mssql/msnodesqlv8.js'
 var config = {
-    user: 'DESKTOP-OJFJMQK\Administrator',
+    // user: 'DESKTOP-OJFJMQK\Administrator',
+    user: 'UditPC\Administrator',
     password: '',
     database: 'udit_gym',
-    server: 'DESKTOP-OJFJMQK\\',
+    // server: 'DESKTOP-OJFJMQK\\',
+    server: 'UDITPC\\',
     driver: 'msnodesqlv8',
     options: {
         trustedConnection: true
     },
-    connectionTimeout: 150000,
+    connectionTimeout: 15000,
     pool: {
         max: 10,
         min: 0,

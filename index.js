@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors({
     origin: "*"
 }))
-app.use('/userController', userController);
+app.use(`/userController`, userController);
 
 // app.use('/loginController', loginController);
 
