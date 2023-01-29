@@ -1,4 +1,14 @@
 
+export function getResponse(response){
+    // log(JSON.stringify(response));
+    let commonResponse = {
+        Data : JSON.stringify(response),
+        Message : "",
+        Status : 1,
+        Success : true
+    }
+    return commonResponse    
+}
 function missingSP(spname){
     return {
         "status": -1,

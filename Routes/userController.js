@@ -7,16 +7,16 @@ const router = express.Router();
 
 
 
-async function callSP(sp, params, req){
+export async function callSP(sp, params, req){
     
     return new Promise( async(res, rej) => {
         const request = pool.request()
                     for(let i = 0; i<params.length; i++){
-                        request.input('prmuserid', req.query[`${params[i]}`]);
+                        request.input(params[i], req.query[`${params[i]}`]);
                     }
         try{
             const result = await request.execute(`${sp}`); 
-            log(result);
+            // log(result);
             res(result.recordsets[0]);
         }
         catch(error){

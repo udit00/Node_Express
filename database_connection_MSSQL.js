@@ -3,7 +3,7 @@ var config = {
     // user: 'DESKTOP-OJFJMQK\Administrator',
     user: 'UditPC\Administrator',
     password: '',
-    database: 'udit_gym',
+    database: 'udit_sm_twitter',
     // server: 'DESKTOP-OJFJMQK\\',
     server: 'UDITPC\\',
     driver: 'msnodesqlv8',

@@ -16,7 +16,7 @@ app.use(cors({
 }))
 app.use(`/userController`, userController);
 
-// app.use('/loginController', loginController);
+app.use('/loginController', loginController);
 
 app.get('/', (req, res) => res.send('Hello from HomePage.'));
 
