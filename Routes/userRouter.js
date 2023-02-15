@@ -1,46 +1,12 @@
 import express from "express";
-import { log } from "../CommonResponse.js";
 import { pool } from '../database_connection_MSSQL.js'
-import { errorHandling } from "../Error_Reponse.js";
+import { callSP_Get } from "../Utils.js";
 const router = express.Router();
 
 
 
-
-export async function callSP(sp, params, req){
-    
-    return new Promise( async(res, rej) => {
-        const request = pool.request()
-                    for(let i = 0; i<params.length; i++){
-                        request.input(params[i], req.query[`${params[i]}`]);
-                    }
-        try{
-            const result = await request.execute(`${sp}`); 
-            // log(result);
-            res(result.recordsets[0]);
-        }
-        catch(error){
-            log(error);
-            rej(errorHandling(error));
-        }
-        
-
-        // sql.connect(config, function (err) {
-        //     if (err) rej(err);
-        //     log('Connection success')
-        //     var request = new sql.Request();
-        //     request.query(`exec ${sp}`, function (err, recordset) {
-        //         if (err) rej(err)
-        //         // res.send(recordset);
-        //         log('test')
-        //         res( recordset );
-        //     });
-        // });
-    })
-}
-
 // // all routers in here are handling the req's that starts with 
-// // http://localhost:5000/userController/getAllUsers
+// // http://localhost:5000/User/getAllUsers
 router.get('/getAllUsers', async (req, res) => {
     try {
         // const request = pool.request();
@@ -48,7 +14,7 @@ router.get('/getAllUsers', async (req, res) => {
         // const result = request.execute(`gymapp_getallusers`);
         var params = [];
         params.push('prmuserid');
-        callSP('gymapp_getallusers', params, req).then((resp) => {
+        callSP_Get('gymapp_getallusers', params, req).then((resp) => {
             res.send(resp);
         }).catch((reason)=> {
             res.send(reason);
